@@ -1,20 +1,41 @@
-{
-    "employee": {
-        "email": "user2@mail.com",
-        "direct_reports": [
-            {
-                "employee": {
-                    "email": "user1@mail.com",
-                    "direct_reports": [
-                        {
-                            "employee": {
-                                "email": "user3@mail.com",
-                                "direct_reports": []
+[
+    {
+        "employee": {
+            "email": "user2@mail.com",
+            "direct_reports": [
+                {
+                    "employee": {
+                        "email": "user1@mail.com",
+                        "direct_reports": [
+                            {
+                                "employee": {
+                                    "email": "user3@mail.com",
+                                    "direct_reports": []
+                                }
                             }
-                        }
-                    ]
+                        ]
+                    }
+                },
+                {
+                    "employee": {
+                        "email": "user6@mail.com",
+                        "direct_reports": []
+                    }
                 }
-            }
-        ]
+            ]
+        }
+    },
+    {
+        "employee": {
+            "email": "user4@mail.com",
+            "direct_reports": [
+                {
+                    "employee": {
+                        "email": "user5@mail.com",
+                        "direct_reports": []
+                    }
+                }
+            ]
+        }
     }
-}
+]

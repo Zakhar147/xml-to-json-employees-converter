@@ -26,15 +26,7 @@ def create_root_reports(xml: str, manager_email: str):
 
     return reports  
 
-def save_to_json_file(data: dict, json_file:str):
-    output_file = json_file if json_file != None else "output_json.json"
-
-    with open(output_file, 'w', encoding='utf-8') as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
-
-    return (f"JSON data saved to {output_file}")              
-
-def parseXmlToJson(xml_root: str, json_file: str):
+def create_manager_obj(xml_root:str):
     json_dic = {}
     email = None
     manager = None
@@ -54,8 +46,27 @@ def parseXmlToJson(xml_root: str, json_file: str):
 
     dic_reps = create_root_reports(xml_root, email)
     json_dic['employee']['direct_reports'].extend(dic_reps)
+    
+    return json_dic
 
-    return save_to_json_file(json_dic, json_file)    
+
+def save_to_json_file(data: dict, json_file:str):
+    output_file = json_file if json_file != None else "output_json.json"
+
+    with open(output_file, 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
+    return (f"JSON data saved to {output_file}")              
+
+
+def parseXmlToJson(xml_root: str, json_file: str):
+    json_dic_result = []
+
+    while len(xml_root) != 0:
+        manager_obj = create_manager_obj(xml_root)
+        json_dic_result.append(manager_obj)
+
+    return save_to_json_file(json_dic_result, json_file)    
 
 def main():
     usage = """
